@@ -2,6 +2,7 @@
   <div class="container">
     <div class="search-box">
       <input type="text" v-model="query" @keypress.enter="getWeather" class="search-bar" placeholder="Search..." />
+      <img @click="getWeather" src="./assets/search-normal.svg"/>
     </div>
     <WeatherBlock :weather="weather" />
 
@@ -27,9 +28,11 @@ export default {
     };
   },
   methods: {
-    async getWeather(){
+    async getWeather(event){
       const currentWeather = await fetchWeather(this.query);
       this.weather = currentWeather;
+      console.log(event.target);
+      this.query = "";
     },
     setResults(results) {
       this.weather = results;
@@ -54,38 +57,40 @@ body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  background: url('./assets/cold.jpg') center no-repeat;
+  background-color: #DCF3FF;
   background-size: cover;
   transition: 0.4s;
 }
 
 .container {
-  min-width: 500px;
+  min-width: 450px;
   padding: 20px;
 }
 
 .search-box {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.search-box img {
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  transform: translateY(-50%);
 }
 
 .search-bar {
   display: block;
   width: 100%;
-  padding: 15px;
-  color: #313131;
-  font-size: 20px;
+  padding: 15px 28px;
+  color: #54577A;
+  font-size: 16px;
   appearance: none;
   border: none;
   outline: none;
-  background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 16px 0px 16px;
+  background-color: #ffffff;
+  border-radius: 10px;
   transition: 0.4s;
 }
 
-.search-bar:focus {
-  background-color: rgba(255, 255, 255, 0.75);
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
-  border-radius: 16px 0px 16px 0px;
-}
 </style>
