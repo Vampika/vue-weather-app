@@ -76,8 +76,17 @@ export default {
 }
 
 .weather__description {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #2A60B7;
+}
+
+@media screen and (max-width: 450px){
+  .weather__temperature{
+    font-size: 28px;
+  }
+  .weather__description{
+    font-size: 14px;
+  }
 }
 </style>

@@ -42,6 +42,8 @@ export default {
 </script>
 
 <style>
+@import url("./fonts.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -49,7 +51,7 @@ export default {
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 #app {
@@ -65,6 +67,12 @@ body {
 .container {
   min-width: 450px;
   padding: 20px;
+}
+
+@media screen and (max-width: 450px){
+  .container{
+    min-width: 100%;
+  }
 }
 
 .search-box {
